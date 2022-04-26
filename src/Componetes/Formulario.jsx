@@ -18,6 +18,8 @@ const Formulario = () => {
     const [id, setId] = useState('')
     const [error, setError] = useState(null);
     const [fechaNacimiento, setFechaNacimiento] = React.useState("");
+    const imagen = 'https://picsum.photos/300'
+    const texto_alternativo = 'Esto es una imagen de picsum'
 
 
     useEffect(() => {
