@@ -1,10 +1,10 @@
 import './App.css';
-import Formulario from './Formulario/personasbp';
+import Formulario from './Componetes/Formulario';
 
 function App() {
   return (
     <>
-      <personasbp/>
+      <Formulario/>
     
     </>
   );

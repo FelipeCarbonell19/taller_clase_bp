@@ -11,13 +11,13 @@ const Formulario = () => {
         telefono: '',
         cumpleaños: " ",
     }
-
     const [persona, setpersona] = useState(objPersona);
     const [lista, setLista] = useState([]);
     const [modoEdicion, setModoEdicion] = useState(false);
     const [id, setId] = useState('')
     const [error, setError] = useState(null);
     const [fechaNacimiento, setFechaNacimiento] = React.useState("");
+
 
     useEffect(() => {
         const obtenerDatos = async () => {
@@ -40,6 +40,8 @@ const Formulario = () => {
 
         obtenerDatos()
     })
+
+
     const guardarDatos = async (e) => {
         e.preventDefault()
 
@@ -47,6 +49,7 @@ const Formulario = () => {
             setError('¡Vacio el campo nombre!');
             return
         }
+
         if (!persona.profesion) {
             setError('¡Vacio el campo profesion!');
             return
@@ -88,93 +91,3 @@ const Formulario = () => {
         setError(null)
 
     }
-
-    const deleteConfirm = (id) => {
-        let opcion = window.confirm('¿Está seguro que desea eliminar?')
-
-        if (!opcion) {
-        } else {
-
-            eliminar(id);
-        }
-
-    }
-
-    const eliminar = async (id) => {
-        try {
-            const db = firebase.firestore()
-            await db.collection('personas').doc(id).delete()
-            const aux = lista.filter(item => item.id !== id)
-            setLista(aux)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const auxEditar = (item) => {
-
-        const objPersona = {
-            nombre: item.nombre,
-            profesion: item.profesion,
-            edad: item.edad,
-            telefono: item.telefono,
-            cumpleaños: item.cumpleaños,
-        }
-
-        setpersona(objPersona);
-        setModoEdicion(true);
-        setId(item.id);
-
-    }
-
-    const editar = async e => {
-        e.preventDefault()
-
-        if (!persona.nombre) {
-            setError('Por favor digitar nombre');
-            return
-        }
-        if (!persona.profesion) {
-            setError('Por favor digitar profesion');
-            return
-        }
-
-        if (!persona.edad) {
-            setError('Por favor digitar edad');
-            return
-        }
-        if (!persona.telefono) {
-            setError('Campo teléfono vacío');
-            return
-        }
-        if(!persona.cumpleaños){
-            setError('Seleccione fecha');
-            return
-        }
-
-        try {
-
-            const db = firebase.firestore()
-            await db.collection('personas').doc(id).update({
-                ...persona
-            })
-
-        } catch (error) {
-            console.log(error)
-        }
-
-        setpersona(objPersona);
-        setModoEdicion(false)
-        setError(null)
-
-    }
-
-    const cancelar = () => {
-
-        setpersona(objPersona)
-        setModoEdicion(false)
-        setError(null)
-    }
-}
-
-export default personasbp;
