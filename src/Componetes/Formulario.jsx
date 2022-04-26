@@ -4,6 +4,13 @@ import { nanoid } from 'nanoid';
 
 const Formulario = () => {
 
+    let foto = 'https://picsum.photos/100/100?image=';
+    const valor = () => {
+        
+        
+        return Math.floor(Math.random()*(599-100+1)+100)
+    }
+    
     const objPersona = {
         nombre: '',
         profesion: '',
@@ -18,9 +25,6 @@ const Formulario = () => {
     const [id, setId] = useState('')
     const [error, setError] = useState(null);
     const [fechaNacimiento, setFechaNacimiento] = React.useState("");
-    const imagen = 'https://picsum.photos/300'
-    const texto_alternativo = 'Esto es una imagen de picsum'
-
 
     useEffect(() => {
         const obtenerDatos = async () => {
@@ -194,6 +198,7 @@ const Formulario = () => {
                         <table className="table table-white">
                             <thead>
                                 <tr>
+                                    <th scope="col">Imagen</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Profesion</th>
                                     <th scope="col">Edad</th>
@@ -205,12 +210,12 @@ const Formulario = () => {
                                 {
                                     lista.map((item) => (
                                         <tr key={item.id}>
+                                            <td><img  src={item.imagen} alt='imagen' /></td>
                                             <td>{item.nombre}</td>
                                             <td>{item.profesion}</td>
                                             <td>{item.edad}</td>
+                                            <td>{item.sexo}</td>
                                             <td>{item.telefono}</td>
-                                            <td>{item.cumpleaños}</td>
-
                                             <td>
                                                 <button className='btn btn-danger btn-sm float-end mx-2'
                                                     onClick={() => deleteConfirm(item.id)}>Eliminar
