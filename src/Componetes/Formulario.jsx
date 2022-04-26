@@ -8,7 +8,7 @@ const Formulario = () => {
     const valor = () => {
         
         
-        return Math.floor(Math.random()*(599-100+1)+100)
+        return Math.floor(Math.random()*(599-100+1)+99)
     }
     
     const objPersona = {
@@ -24,7 +24,7 @@ const Formulario = () => {
     const [modoEdicion, setModoEdicion] = useState(false);
     const [id, setId] = useState('')
     const [error, setError] = useState(null);
-    const [fechaNacimiento, setFechaNacimiento] = React.useState("");
+
 
     useEffect(() => {
         const obtenerDatos = async () => {
@@ -79,10 +79,10 @@ const Formulario = () => {
         try {
 
             const db = firebase.firestore();
+            persona.imagen = foto+valor();
             const personaNueva = {
                 ...persona,
             }
-
             await db.collection('personas').add(personaNueva);
 
             setLista([...lista,
