@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import 'firebase/firestore';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCOSgv46lglCLcYslPaNCg7Dpe1kn-_jjI",
-    authDomain: "tallerenclase-b52bf.firebaseapp.com",
-    projectId: "tallerenclase-b52bf",
-    storageBucket: "tallerenclase-b52bf.appspot.com",
-    messagingSenderId: "643538202022",
-    appId: "1:643538202022:web:495a0c7933324f7e73f367"
+    apiKey: "AIzaSyAQLDPRB31PZW0Bh-sK7kZOHv0V22NaSY4",
+    authDomain: "tallerbasebuenasp.firebaseapp.com",
+    projectId: "tallerbasebuenasp",
+    storageBucket: "tallerbasebuenasp.appspot.com",
+    messagingSenderId: "368408468171",
+    appId: "1:368408468171:web:9f032d03135201e8ad994e"
   };
 
 firebase.initializeApp(firebaseConfig);
